@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
+import Card from './components/Card';
 
 const formInfo = {
   cardName: '',
@@ -8,17 +9,9 @@ const formInfo = {
   cardAttr2: '',
   cardAttr3: '',
   cardImage: '',
-  cardRare: 'Selecione',
+  cardRare: '',
   cardTrunfo: false,
   isSaveButtonDisabled: true,
-};
-
-const onInputChange = ({ target }) => {
-  const { name } = target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
-  this.setState({
-    [name]: value,
-  });
 };
 
 class App extends React.Component {
@@ -27,11 +20,24 @@ class App extends React.Component {
     this.state = formInfo;
   }
 
+  onInputChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     return (
       <div className="container">
         <h1>Tryunfo</h1>
-        <Form { ...this.state } onInputChange={ onInputChange } />
+        <section>
+          <Form { ...this.state } onInputChange={ this.onInputChange } />
+        </section>
+        <section>
+          <Card { ...this.state } />
+        </section>
       </div>
     );
   }
