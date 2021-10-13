@@ -20,4 +20,16 @@ code {
 
 .div-infos {
   margin: 15px;
+  max-width: 200px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  width: 300px;
+  height: 600px;
+  margin: 50px 20px;
 }

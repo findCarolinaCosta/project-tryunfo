@@ -35,12 +35,12 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="descriptionletter">
+          <label htmlFor="cardDescription">
             Descrição da carta:
             <textarea
               data-testid="description-input"
-              name="descriptionletter"
-              id="descriptionletter"
+              name="cardDescription"
+              id="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
             />
@@ -48,13 +48,13 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="firstattribute">
+          <label htmlFor="cardAttr1">
             Digite o primeiro atributo da carta:
             <input
               data-testid="attr1-input"
               type="number"
-              name="firstattribute"
-              id="firstattribute"
+              name="cardAttr1"
+              id="cardAttr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
@@ -62,13 +62,13 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="secondattribute">
+          <label htmlFor="cardAttr2">
             Digite o segundo atributo da carta:
             <input
               data-testid="attr2-input"
               type="number"
-              name="secondattribute"
-              id="secondattribute"
+              name="cardAttr2"
+              id="cardAttr2"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
@@ -76,13 +76,13 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="thirdattribute">
+          <label htmlFor="cardAttr3">
             Digite o terceiro atributo da carta:
             <input
               data-testid="attr3-input"
               type="number"
-              name="thirdattribute"
-              id="thirdattribute"
+              name="cardAttr3"
+              id="cardAttr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
@@ -90,13 +90,13 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="imgcart">
+          <label htmlFor="cardImage">
             Url da imagem da carta:
             <input
               data-testid="image-input"
               type="text"
-              name="imgcart"
-              id="imgcart"
+              name="cardImage"
+              id="cardImage"
               value={ cardImage }
               onChange={ onInputChange }
             />
@@ -105,12 +105,12 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="rarityletter">
+          <label htmlFor="cardRare">
             Selecione a raridade da carta:
             <select
               data-testid="rare-input"
-              name="rarityletter"
-              id="rarityletter"
+              name="cardRare"
+              id="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
             >
@@ -122,11 +122,12 @@ class Form extends Component {
         </div>
 
         <div className="div-infos">
-          <label htmlFor="super">
+          <label htmlFor="cardTrunfo">
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              id="super"
+              id="cardTrunfo"
+              name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
