@@ -18,12 +18,13 @@ class Form extends Component {
     } = this.props;
 
     return (
-      <form className="container" onSubmit={ onSaveButtonClick }>
+      <form className="container-info" onSubmit={ onSaveButtonClick }>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardName">
             Nome da carta:
             <input
+              className="text"
               data-testid="name-input"
               type="text"
               name="cardName"
@@ -34,7 +35,7 @@ class Form extends Component {
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardDescription">
             Descrição da carta:
             <textarea
@@ -43,14 +44,17 @@ class Form extends Component {
               id="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
+              rows="10"
+              cols="30"
             />
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardAttr1">
             Digite o primeiro atributo da carta:
             <input
+              className="text"
               data-testid="attr1-input"
               type="number"
               name="cardAttr1"
@@ -61,10 +65,11 @@ class Form extends Component {
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardAttr2">
             Digite o segundo atributo da carta:
             <input
+              className="text"
               data-testid="attr2-input"
               type="number"
               name="cardAttr2"
@@ -75,10 +80,11 @@ class Form extends Component {
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardAttr3">
             Digite o terceiro atributo da carta:
             <input
+              className="text"
               data-testid="attr3-input"
               type="number"
               name="cardAttr3"
@@ -89,10 +95,11 @@ class Form extends Component {
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardImage">
             Url da imagem da carta:
             <input
+              className="text"
               data-testid="image-input"
               type="text"
               name="cardImage"
@@ -104,7 +111,7 @@ class Form extends Component {
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardRare">
             Selecione a raridade da carta:
             <select
@@ -121,7 +128,7 @@ class Form extends Component {
           </label>
         </div>
 
-        <div className="div-infos">
+        <div className="div-internal">
           <label htmlFor="cardTrunfo">
             <input
               data-testid="trunfo-input"
