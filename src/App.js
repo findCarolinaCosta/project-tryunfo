@@ -23,6 +23,8 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
+    const { cardList } = this.state;
+    console.log(cardList);
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -55,14 +57,41 @@ class App extends React.Component {
     });
   };
 
-  createCardList= () => {
+  createCardList = () => {
     const { cardList } = this.state;
     return cardList
       .map((card) => (
-        <Card
-          key={ card.savedCard.cardName }
-          { ...card.savedCard }
-        />));
+        <div key={ card.cardName }>
+          <Card
+            key={ card.cardName }
+            { ...card.savedCard }
+          />
+          <button
+            type="button"
+            data-testid="delete-button"
+            name="delete-button"
+            id={ card.savedCard.cardName }
+            onClick={ this.removeCardList }
+          >
+            Excluir
+          </button>
+        </div>
+      ));
+  }
+
+  removeCardList = ({ target }) => {
+    const { id } = target.previousSibling;
+    const { cardList } = this.state;
+
+    this.setState({
+      cardList: cardList.filter((card) => card.savedCard.cardName !== target.id),
+    });
+
+    if (id === 'trunfo-card') {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
   }
 
   onSaveButtonClick = (event) => {
@@ -110,7 +139,7 @@ class App extends React.Component {
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              id="cardTrunfo"
+              id="trunfo-card"
               name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ this.onInputChange }
