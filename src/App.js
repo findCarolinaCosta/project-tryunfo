@@ -55,6 +55,16 @@ class App extends React.Component {
     });
   };
 
+  createCardList= () => {
+    const { cardList } = this.state;
+    return cardList
+      .map((card) => (
+        <Card
+          key={ card.savedCard.cardName }
+          { ...card.savedCard }
+        />));
+  }
+
   onSaveButtonClick = (event) => {
     const {
       cardList,
@@ -127,6 +137,7 @@ class App extends React.Component {
         </section>
         <section>
           <Card { ...this.state } />
+          { this.createCardList() }
         </section>
       </div>
     );
