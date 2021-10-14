@@ -20,13 +20,12 @@ input {
   margin: 5%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 input {
   margin: 5%;
+}
+
+p.text{
+  margin: 30px;
 }
 
 .container {

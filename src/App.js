@@ -13,6 +13,7 @@ const formInfo = {
   cardTrunfo: false,
   isSaveButtonDisabled: true,
   cardList: [],
+  hasTrunfo: false,
 };
 
 class App extends React.Component {
@@ -76,9 +77,39 @@ class App extends React.Component {
       cardTrunfo,
     };
     event.preventDefault();
-    console.log('foi clicado');
     cardList.push({ savedCard });
-    this.setState({ ...formInfo });
+
+    let checkTrunfo = false;
+    if (checkTrunfo) {
+      this.setState({ ...formInfo, hasTrunfo: true });
+    } else if (cardTrunfo) {
+      checkTrunfo = true;
+      this.setState({ ...formInfo, hasTrunfo: true });
+    } else {
+      checkTrunfo = false;
+      this.setState({ ...formInfo });
+    }
+  }
+
+  checkboxTrunfo = () => {
+    const { hasTrunfo, cardTrunfo } = this.state;
+    if (!hasTrunfo) {
+      return (
+        <div className="div-internal">
+          <label htmlFor="cardTrunfo">
+            <input
+              data-testid="trunfo-input"
+              type="checkbox"
+              id="cardTrunfo"
+              name="cardTrunfo"
+              checked={ cardTrunfo }
+              onChange={ this.onInputChange }
+            />
+            É uma carta Super Trunfo? ⭐⭐⭐⭐⭐
+          </label>
+        </div>);
+    }
+    return <p className="text">Você já tem um Super Trunfo em seu baralho</p>;
   }
 
   render() {
@@ -90,6 +121,7 @@ class App extends React.Component {
             { ...this.state }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
+            checkboxTrunfo={ this.checkboxTrunfo }
             onSubmit={ this.onSaveButtonClick }
           />
         </section>
