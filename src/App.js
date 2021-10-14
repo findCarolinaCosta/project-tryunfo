@@ -5,13 +5,14 @@ import Card from './components/Card';
 const formInfo = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: '',
-  cardAttr2: '',
-  cardAttr3: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
   cardImage: '',
-  cardRare: '',
+  cardRare: 'Normal',
   cardTrunfo: false,
   isSaveButtonDisabled: true,
+  cardList: [],
 };
 
 class App extends React.Component {
@@ -53,12 +54,44 @@ class App extends React.Component {
     });
   };
 
+  onSaveButtonClick = (event) => {
+    const {
+      cardList,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo } = this.state;
+    const savedCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    event.preventDefault();
+    console.log('foi clicado');
+    cardList.push({ savedCard });
+    this.setState({ ...formInfo });
+  }
+
   render() {
     return (
       <div className="container">
         <h1>Tryunfo</h1>
         <section>
-          <Form { ...this.state } onInputChange={ this.onInputChange } />
+          <Form
+            { ...this.state }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            onSubmit={ this.onSaveButtonClick }
+          />
         </section>
         <section>
           <Card { ...this.state } />

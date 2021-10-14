@@ -18,7 +18,7 @@ class Form extends Component {
     } = this.props;
 
     return (
-      <form className="container">
+      <form className="container" onSubmit={ onSaveButtonClick }>
 
         <div className="div-infos">
           <label htmlFor="cardName">
@@ -137,12 +137,10 @@ class Form extends Component {
 
         <button
           data-testid="save-button"
-          type="button"
+          type="submit"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
         >
           Salvar
-
         </button>
 
       </form>
