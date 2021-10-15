@@ -12,10 +12,36 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      render,
+      removeBtn,
     } = this.props;
 
+    const renderBtn = () => {
+      if (render) {
+        return (
+          <button
+            type="button"
+            data-testid="delete-button"
+            onClick={ removeBtn }
+            id={ cardName }
+          >
+            Excluir
+          </button>
+        );
+      }
+    };
+
     const checkCardTrunfo = () => {
-      if (cardTrunfo) { return <h4 data-testid="trunfo-card">Super Trunfo</h4>; }
+      if (cardTrunfo) {
+        return (
+          <h4
+            id="trunfo-card"
+            data-testid="trunfo-card"
+          >
+            Super Trunfo
+          </h4>
+        );
+      }
     };
 
     return (
@@ -28,6 +54,7 @@ class Card extends Component {
         <h3 data-testid="attr3-card">{cardAttr3}</h3>
         <h4 data-testid="rare-card">{cardRare}</h4>
         { checkCardTrunfo() }
+        { renderBtn() }
       </div>
     );
   }
@@ -42,6 +69,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  render: PropTypes.func.isRequired,
+  removeBtn: PropTypes.func.isRequired,
 };
 
 export default Card;

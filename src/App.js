@@ -11,15 +11,17 @@ const formInfo = {
   cardImage: '',
   cardRare: 'Normal',
   cardTrunfo: false,
-  isSaveButtonDisabled: true,
-  cardList: [],
-  hasTrunfo: false,
 };
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = formInfo;
+    this.state = {
+      ...formInfo,
+      hasTrunfo: false,
+      cardList: [],
+      isSaveButtonDisabled: true,
+    };
   }
 
   onInputChange = ({ target }) => {
@@ -55,50 +57,42 @@ class App extends React.Component {
     });
   };
 
-  createCardList= () => {
+  createCardList = () => {
     const { cardList } = this.state;
     return cardList
       .map((card) => (
         <Card
-          key={ card.savedCard.cardName }
-          { ...card.savedCard }
+          key={ card.cardName }
+          { ...card }
+          render
+          removeBtn={ this.removeBtn }
         />));
   }
 
-  onSaveButtonClick = (event) => {
-    const {
-      cardList,
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo } = this.state;
-    const savedCard = {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-    };
-    event.preventDefault();
-    cardList.push({ savedCard });
+  removeBtn = ({ target }) => {
+    const { id } = target.previousSibling;
+    const { cardList } = this.state;
+    const newCardList = cardList.filter((card) => card.cardName !== target.id);
+    this.setState({
+      cardList: [...newCardList],
+    });
 
-    let checkTrunfo = false;
-    if (checkTrunfo) {
-      this.setState({ ...formInfo, hasTrunfo: true });
-    } else if (cardTrunfo) {
-      checkTrunfo = true;
-      this.setState({ ...formInfo, hasTrunfo: true });
-    } else {
-      checkTrunfo = false;
-      this.setState({ ...formInfo });
+    if (id === 'trunfo-card') {
+      this.setState({
+        hasTrunfo: false,
+      });
     }
+  }
+
+  onSaveButtonClick = (event) => {
+    const { cardList } = this.state;
+    event.preventDefault();
+    cardList.push({ ...this.state });
+
+    this.setState({
+      hasTrunfo: cardList.some((card) => card.cardTrunfo),
+    });
+    this.setState({ ...formInfo });
   }
 
   checkboxTrunfo = () => {
