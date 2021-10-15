@@ -25,8 +25,6 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { cardList } = this.state;
-    console.log(cardList);
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -95,27 +93,6 @@ class App extends React.Component {
       hasTrunfo: cardList.some((card) => card.cardTrunfo),
     });
     this.setState({ ...formInfo });
-  }
-
-  checkboxTrunfo = () => {
-    const { hasTrunfo, cardTrunfo } = this.state;
-    if (!hasTrunfo) {
-      return (
-        <div className="div-internal">
-          <label htmlFor="cardTrunfo">
-            <input
-              data-testid="trunfo-input"
-              type="checkbox"
-              id="trunfo-card"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ this.onInputChange }
-            />
-            É uma carta Super Trunfo? ⭐⭐⭐⭐⭐
-          </label>
-        </div>);
-    }
-    return <p className="text">Você já tem um Super Trunfo em seu baralho</p>;
   }
 
   render() {
