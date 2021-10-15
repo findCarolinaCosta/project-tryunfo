@@ -25,6 +25,8 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
+    const { cardList } = this.state;
+    console.log(cardList);
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -104,7 +106,7 @@ class App extends React.Component {
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              id="cardTrunfo"
+              id="trunfo-card"
               name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ this.onInputChange }
