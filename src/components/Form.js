@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonSubmit from './ButtonSubmit';
+import InputsNameDescription from './InputsNameDescription';
 
 class Form extends Component {
   render() {
@@ -13,7 +14,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       isSaveButtonDisabled,
-      onInputChange,
+      inputChange,
       onSaveButtonClick,
       hasTrunfo,
       cardTrunfo,
@@ -30,7 +31,7 @@ class Form extends Component {
                 id="trunfo-card"
                 name="cardTrunfo"
                 checked={ cardTrunfo }
-                onChange={ onInputChange }
+                onChange={ inputChange }
               />
               É uma carta Super Trunfo? ⭐⭐⭐⭐⭐
             </label>
@@ -42,35 +43,11 @@ class Form extends Component {
     return (
       <form className="container-info" onSubmit={ onSaveButtonClick }>
 
-        <div className="div-internal">
-          <label htmlFor="cardName">
-            Nome da carta:
-            <input
-              className="text"
-              data-testid="name-input"
-              type="text"
-              name="cardName"
-              id="cardName"
-              value={ cardName }
-              onChange={ onInputChange }
-            />
-          </label>
-        </div>
-
-        <div className="div-internal">
-          <label htmlFor="cardDescription">
-            Descrição da carta:
-            <textarea
-              data-testid="description-input"
-              name="cardDescription"
-              id="cardDescription"
-              value={ cardDescription }
-              onChange={ onInputChange }
-              rows="10"
-              cols="30"
-            />
-          </label>
-        </div>
+        <InputsNameDescription
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          inputChange={ inputChange }
+        />
 
         <div className="div-internal">
           <label htmlFor="cardAttr1">
@@ -82,7 +59,7 @@ class Form extends Component {
               name="cardAttr1"
               id="cardAttr1"
               value={ cardAttr1 }
-              onChange={ onInputChange }
+              onChange={ inputChange }
             />
           </label>
         </div>
@@ -97,7 +74,7 @@ class Form extends Component {
               name="cardAttr2"
               id="cardAttr2"
               value={ cardAttr2 }
-              onChange={ onInputChange }
+              onChange={ inputChange }
             />
           </label>
         </div>
@@ -112,7 +89,7 @@ class Form extends Component {
               name="cardAttr3"
               id="cardAttr3"
               value={ cardAttr3 }
-              onChange={ onInputChange }
+              onChange={ inputChange }
             />
           </label>
         </div>
@@ -127,7 +104,7 @@ class Form extends Component {
               name="cardImage"
               id="cardImage"
               value={ cardImage }
-              onChange={ onInputChange }
+              onChange={ inputChange }
             />
 
           </label>
@@ -141,7 +118,7 @@ class Form extends Component {
               name="cardRare"
               id="cardRare"
               value={ cardRare }
-              onChange={ onInputChange }
+              onChange={ inputChange }
             >
               <option>normal</option>
               <option>raro</option>
@@ -170,7 +147,7 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  inputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
 

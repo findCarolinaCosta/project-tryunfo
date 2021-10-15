@@ -7,13 +7,15 @@ class ButtonSubmit extends Component {
       isSaveButtonDisabled,
     } = this.props;
     return (
-      <button
-        data-testid="save-button"
-        type="submit"
-        disabled={ isSaveButtonDisabled }
-      >
-        Salvar
-      </button>
+      <section>
+        <button
+          data-testid="save-button"
+          type="submit"
+          disabled={ isSaveButtonDisabled }
+        >
+          Salvar
+        </button>
+      </section>
     );
   }
 }
