@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ButtonSubmit from './ButtonSubmit';
 
 class Form extends Component {
   render() {
@@ -151,13 +152,7 @@ class Form extends Component {
 
         { checkboxTrunfo() }
 
-        <button
-          data-testid="save-button"
-          type="submit"
-          disabled={ isSaveButtonDisabled }
-        >
-          Salvar
-        </button>
+        <ButtonSubmit isSaveButtonDisabled={ isSaveButtonDisabled } />
 
       </form>
     );

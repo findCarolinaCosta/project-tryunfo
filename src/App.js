@@ -65,11 +65,11 @@ class App extends React.Component {
           key={ card.cardName }
           { ...card }
           render
-          removeBtn={ this.removeBtn }
+          removeBtn={ this.getRemoveBtn }
         />));
   }
 
-  removeBtn = ({ target }) => {
+  getRemoveBtn = ({ target }) => {
     const { id } = target.previousSibling;
     const { cardList } = this.state;
     const newCardList = cardList.filter((card) => card.cardName !== target.id);
