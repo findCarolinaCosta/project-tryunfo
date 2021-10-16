@@ -24,7 +24,7 @@ class App extends React.Component {
     };
   }
 
-  getInputChange = ({ target }) => {
+  onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -102,7 +102,7 @@ class App extends React.Component {
         <section>
           <Form
             { ...this.state }
-            inputChange={ this.getInputChange }
+            onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
             checkboxTrunfo={ this.checkboxTrunfo }
             onSubmit={ this.onSaveButtonClick }

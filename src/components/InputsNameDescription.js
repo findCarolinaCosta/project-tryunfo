@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class InputsNameDescription extends Component {
   render() {
-    const { cardName, cardDescription, inputChange } = this.props;
+    const { cardName, cardDescription, onInputChange } = this.props;
     return (
       <section>
         <div className="div-internal">
@@ -17,7 +17,7 @@ class InputsNameDescription extends Component {
               id="cardName"
               placeholder="Digite nome da carta..."
               value={ cardName }
-              onChange={ inputChange }
+              onChange={ onInputChange }
             />
           </label>
         </div>
@@ -30,7 +30,7 @@ class InputsNameDescription extends Component {
               name="cardDescription"
               id="cardDescription"
               value={ cardDescription }
-              onChange={ inputChange }
+              onChange={ onInputChange }
               rows="10"
               cols="30"
               placeholder="Digite uma descrição da carta..."
@@ -45,7 +45,7 @@ class InputsNameDescription extends Component {
 InputsNameDescription.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  inputChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 export default InputsNameDescription;

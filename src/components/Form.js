@@ -14,7 +14,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       isSaveButtonDisabled,
-      inputChange,
+      onInputChange,
       onSaveButtonClick,
       hasTrunfo,
       cardTrunfo,
@@ -31,7 +31,7 @@ class Form extends Component {
                 id="trunfo-card"
                 name="cardTrunfo"
                 checked={ cardTrunfo }
-                onChange={ inputChange }
+                onChange={ onInputChange }
               />
               É uma carta Super Trunfo? ⭐⭐⭐⭐⭐
             </label>
@@ -46,7 +46,7 @@ class Form extends Component {
         <InputsNameDescription
           cardName={ cardName }
           cardDescription={ cardDescription }
-          inputChange={ inputChange }
+          onInputChange={ onInputChange }
         />
 
         <div className="div-internal">
@@ -59,7 +59,7 @@ class Form extends Component {
               name="cardAttr1"
               id="cardAttr1"
               value={ cardAttr1 }
-              onChange={ inputChange }
+              onChange={ onInputChange }
             />
           </label>
         </div>
@@ -74,7 +74,7 @@ class Form extends Component {
               name="cardAttr2"
               id="cardAttr2"
               value={ cardAttr2 }
-              onChange={ inputChange }
+              onChange={ onInputChange }
             />
           </label>
         </div>
@@ -89,7 +89,7 @@ class Form extends Component {
               name="cardAttr3"
               id="cardAttr3"
               value={ cardAttr3 }
-              onChange={ inputChange }
+              onChange={ onInputChange }
             />
           </label>
         </div>
@@ -104,7 +104,7 @@ class Form extends Component {
               name="cardImage"
               id="cardImage"
               value={ cardImage }
-              onChange={ inputChange }
+              onChange={ onInputChange }
             />
 
           </label>
@@ -118,7 +118,7 @@ class Form extends Component {
               name="cardRare"
               id="cardRare"
               value={ cardRare }
-              onChange={ inputChange }
+              onChange={ onInputChange }
             >
               <option>normal</option>
               <option>raro</option>
@@ -147,7 +147,7 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  inputChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
 
