@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import checkAttributes from './components/CheckAttributes';
 
 const formInfo = {
   cardName: '',
@@ -30,26 +31,7 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, () => {
-      const { cardName, cardDescription, cardImage, cardRare,
-        cardAttr1, cardAttr2, cardAttr3 } = this.state;
-      const limitPerAttribute = 90;
-      const sumMax = 210;
-      const sumFinalAtributes = (Number(cardAttr1)
-        + Number(cardAttr2)
-        + Number(cardAttr3)) <= sumMax;
-      const sumAtribues = Number(cardAttr1) >= 0
-        && Number(cardAttr2) >= 0
-        && Number(cardAttr3) >= 0;
-      const checkingLimitPerAttribute = Number(cardAttr1) <= limitPerAttribute
-        && Number(cardAttr2) <= limitPerAttribute
-        && Number(cardAttr3) <= limitPerAttribute;
-      if (cardName
-        && cardDescription
-        && cardImage
-        && cardRare
-        && sumAtribues
-        && checkingLimitPerAttribute
-        && sumFinalAtributes) {
+      if (checkAttributes({ ...this.state }) === 'false') {
         this.setState({ isSaveButtonDisabled: false });
       } else {
         this.setState({ isSaveButtonDisabled: true });
@@ -104,7 +86,6 @@ class App extends React.Component {
             { ...this.state }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
-            checkboxTrunfo={ this.checkboxTrunfo }
             onSubmit={ this.onSaveButtonClick }
           />
         </section>
