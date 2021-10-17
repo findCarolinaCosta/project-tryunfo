@@ -4,13 +4,11 @@ import ButtonSubmit from './ButtonSubmit';
 import InputsNameDescription from './InputsNameDescription';
 import RenderAttributes from './RenderAttributes';
 import RenderImage from './RenderImage';
+import RenderSelectRarity from './RenderSelectRarity';
 
 class Form extends Component {
   render() {
     const {
-      cardName,
-      cardDescription,
-      cardRare,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -41,32 +39,13 @@ class Form extends Component {
     return (
       <form className="container-info" onSubmit={ onSaveButtonClick }>
 
-        <InputsNameDescription
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          onInputChange={ onInputChange }
-        />
+        <InputsNameDescription { ...this.props } />
 
         <RenderAttributes { ...this.props } />
 
         <RenderImage { ...this.props } />
 
-        <div className="div-internal">
-          <label htmlFor="cardRare">
-            Selecione a raridade da carta:
-            <select
-              data-testid="rare-input"
-              name="cardRare"
-              id="cardRare"
-              value={ cardRare }
-              onChange={ onInputChange }
-            >
-              <option>normal</option>
-              <option>raro</option>
-              <option>muito raro</option>
-            </select>
-          </label>
-        </div>
+        <RenderSelectRarity { ...this.props } />
 
         { checkboxTrunfo() }
 
@@ -78,13 +57,6 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
