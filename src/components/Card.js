@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import getRemoveBtn from './ButtonRemoveCard';
+import RenderDeleteBtn from './RenderDeleteBtn';
 
 class Card extends Component {
   render() {
@@ -17,21 +17,6 @@ class Card extends Component {
       removeBtn,
     } = this.props;
 
-    const renderDeleteBtn = () => {
-      if (render) {
-        return (
-          <button
-            type="button"
-            data-testid="delete-button"
-            onClick={ removeBtn }
-            id={ cardName }
-          >
-            Excluir
-          </button>
-        );
-      }
-    };
-
     const checkCardTrunfo = () => {
       if (cardTrunfo) {
         return (
@@ -46,7 +31,7 @@ class Card extends Component {
     };
 
     return (
-      <div className="card">
+      <div className="card" id={ cardTrunfo ? 'trunfo-card' : { cardName } }>
         <h2 data-testid="name-card">{cardName}</h2>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" width="150" />
         <p data-testid="description-card">{cardDescription}</p>
@@ -55,7 +40,10 @@ class Card extends Component {
         <h3 data-testid="attr3-card">{cardAttr3}</h3>
         <h4 data-testid="rare-card">{cardRare}</h4>
         { checkCardTrunfo() }
-        { renderDeleteBtn() }
+        {render && <RenderDeleteBtn
+          cardName={ cardName }
+          removeBtn={ removeBtn }
+        />}
       </div>
     );
   }
@@ -70,8 +58,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  render: PropTypes.func.isRequired,
   removeBtn: PropTypes.func.isRequired,
+  render: PropTypes.bool.isRequired,
 };
 
 export default Card;
