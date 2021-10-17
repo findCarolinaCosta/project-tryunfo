@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import checkAttributes from './components/CheckAttributes';
+import CreateCardList from './components/CreateCardList';
 
 const formInfo = {
   cardName: '',
@@ -30,26 +31,16 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, () => {
-      if (checkAttributes({ ...this.state }) === 'false') {
-        this.setState({ isSaveButtonDisabled: false });
-      } else {
-        this.setState({ isSaveButtonDisabled: true });
-      }
-    });
+    }, () => this.getCheckAttributes());
   };
 
-  createCardList = () => {
-    const { cardList } = this.state;
-    return cardList
-      .map((card) => (
-        <Card
-          key={ card.cardName }
-          { ...card }
-          render
-          removeBtn={ this.getRemoveBtn }
-        />));
-  }
+  getCheckAttributes = () => {
+    if (checkAttributes({ ...this.state }) === 'false') {
+      this.setState({ isSaveButtonDisabled: false });
+    } else {
+      this.setState({ isSaveButtonDisabled: true });
+    }
+  };
 
   getRemoveBtn = ({ target }) => {
     const { id } = target.previousSibling;
@@ -64,7 +55,7 @@ class App extends React.Component {
         hasTrunfo: false,
       });
     }
-  }
+  };
 
   onSaveButtonClick = (event) => {
     const { cardList } = this.state;
@@ -91,7 +82,10 @@ class App extends React.Component {
         </section>
         <section>
           <Card { ...this.state } />
-          { this.createCardList() }
+          <CreateCardList
+            { ...this.state }
+            getRemoveBtn={ this.getRemoveBtn }
+          />
         </section>
       </div>
     );
