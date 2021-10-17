@@ -7,6 +7,8 @@ import getRemoveBtn from './components/RemoveCartFilter';
 import onInputChange from './components/GetInputChance';
 import onSaveButtonClick from './components/SaveButtonActions';
 import formInfo from './stateData';
+import SearchInput from './components/SearchInput';
+import RenderReferringSearch from './components/SerchInputActions';
 
 class App extends React.Component {
   constructor() {
@@ -22,6 +24,8 @@ class App extends React.Component {
     this.onInputChange = onInputChange.bind(this);
     this.checkAttributes = checkAttributes.bind(this);
     this.onSaveButtonClick = onSaveButtonClick.bind(this);
+    this.SearchInput = SearchInput.bind(this);
+    this.RenderReferringSearch = RenderReferringSearch.bind(this);
   }
 
   render() {
@@ -32,11 +36,14 @@ class App extends React.Component {
         <section>
           <Form { ...this.state } { ...this } />
         </section>
+
+        <section>
+          <SearchInput { ...this.state } { ...this } />
+        </section>
+
         <section>
           <Card { ...this.state } />
-
           { createCardList() }
-
         </section>
       </div>
     );

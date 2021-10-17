@@ -7,6 +7,7 @@ const formInfo = {
   cardImage: '',
   cardRare: 'Normal',
   cardTrunfo: false,
+  filterSearch: '',
 };
 
 export default formInfo;
