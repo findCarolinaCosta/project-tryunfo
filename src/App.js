@@ -4,6 +4,7 @@ import Card from './components/Card';
 import checkAttributes from './components/CheckAttributes';
 import getCreateCardList from './components/CreateCardList';
 import getRemoveBtn from './components/RemoveCartFilter';
+import onInputChange from './components/GetInputChance';
 
 const formInfo = {
   cardName: '',
@@ -27,15 +28,8 @@ class App extends React.Component {
     };
     this.removeBtn = getRemoveBtn.bind(this);
     this.createCardList = getCreateCardList.bind(this);
+    this.onInputChange = onInputChange.bind(this);
   }
-
-  onInputChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    }, () => this.getCheckAttributes());
-  };
 
   getCheckAttributes = () => {
     if (checkAttributes({ ...this.state }) === 'false') {
