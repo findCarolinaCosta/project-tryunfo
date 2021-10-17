@@ -1,6 +1,6 @@
-const checkAttributes = (state) => {
+function checkAttributes() {
   const { cardName, cardDescription, cardImage, cardRare,
-    cardAttr1, cardAttr2, cardAttr3 } = state;
+    cardAttr1, cardAttr2, cardAttr3 } = this.state;
   const limitPerAttribute = 90;
   const sumMax = 210;
   const sumFinalAtributes = (Number(cardAttr1)
@@ -19,9 +19,9 @@ const checkAttributes = (state) => {
     && sumAtribues
     && checkingLimitPerAttribute
     && sumFinalAtributes) {
-    return 'false';
+    return this.setState({ isSaveButtonDisabled: false });
   }
-  return 'true';
-};
+  return this.setState({ isSaveButtonDisabled: true });
+}
 
 export default checkAttributes;

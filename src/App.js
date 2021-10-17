@@ -29,15 +29,8 @@ class App extends React.Component {
     this.removeBtn = getRemoveBtn.bind(this);
     this.createCardList = getCreateCardList.bind(this);
     this.onInputChange = onInputChange.bind(this);
+    this.checkAttributes = checkAttributes.bind(this);
   }
-
-  getCheckAttributes = () => {
-    if (checkAttributes({ ...this.state }) === 'false') {
-      this.setState({ isSaveButtonDisabled: false });
-    } else {
-      this.setState({ isSaveButtonDisabled: true });
-    }
-  };
 
   onSaveButtonClick = (event) => {
     const { cardList } = this.state;
