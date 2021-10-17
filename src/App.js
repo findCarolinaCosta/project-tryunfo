@@ -5,17 +5,8 @@ import checkAttributes from './components/CheckAttributes';
 import getCreateCardList from './components/CreateCardList';
 import getRemoveBtn from './components/RemoveCartFilter';
 import onInputChange from './components/GetInputChance';
-
-const formInfo = {
-  cardName: '',
-  cardDescription: '',
-  cardAttr1: '0',
-  cardAttr2: '0',
-  cardAttr3: '0',
-  cardImage: '',
-  cardRare: 'Normal',
-  cardTrunfo: false,
-};
+import onSaveButtonClick from './components/SaveButtonActions';
+import formInfo from './stateData';
 
 class App extends React.Component {
   constructor() {
@@ -30,17 +21,7 @@ class App extends React.Component {
     this.createCardList = getCreateCardList.bind(this);
     this.onInputChange = onInputChange.bind(this);
     this.checkAttributes = checkAttributes.bind(this);
-  }
-
-  onSaveButtonClick = (event) => {
-    const { cardList } = this.state;
-    event.preventDefault();
-    cardList.push({ ...this.state });
-
-    this.setState({
-      hasTrunfo: cardList.some((card) => card.cardTrunfo),
-    });
-    this.setState({ ...formInfo });
+    this.onSaveButtonClick = onSaveButtonClick.bind(this);
   }
 
   render() {
@@ -49,17 +30,13 @@ class App extends React.Component {
       <div className="container">
         <h1>Tryunfo</h1>
         <section>
-          <Form
-            { ...this.state }
-            onInputChange={ this.onInputChange }
-            onSaveButtonClick={ this.onSaveButtonClick }
-            onSubmit={ this.onSaveButtonClick }
-          />
+          <Form { ...this.state } { ...this } />
         </section>
         <section>
           <Card { ...this.state } />
 
           { createCardList() }
+
         </section>
       </div>
     );
