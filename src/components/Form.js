@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonSubmit from './ButtonSubmit';
 import InputsNameDescription from './InputsNameDescription';
+import RenderAttributes from './RenderAttributes';
 
 class Form extends Component {
   render() {
     const {
       cardName,
       cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
       cardImage,
       cardRare,
       isSaveButtonDisabled,
@@ -49,50 +47,7 @@ class Form extends Component {
           onInputChange={ onInputChange }
         />
 
-        <div className="div-internal">
-          <label htmlFor="cardAttr1">
-            Digite o primeiro atributo da carta:
-            <input
-              className="text"
-              data-testid="attr1-input"
-              type="number"
-              name="cardAttr1"
-              id="cardAttr1"
-              value={ cardAttr1 }
-              onChange={ onInputChange }
-            />
-          </label>
-        </div>
-
-        <div className="div-internal">
-          <label htmlFor="cardAttr2">
-            Digite o segundo atributo da carta:
-            <input
-              className="text"
-              data-testid="attr2-input"
-              type="number"
-              name="cardAttr2"
-              id="cardAttr2"
-              value={ cardAttr2 }
-              onChange={ onInputChange }
-            />
-          </label>
-        </div>
-
-        <div className="div-internal">
-          <label htmlFor="cardAttr3">
-            Digite o terceiro atributo da carta:
-            <input
-              className="text"
-              data-testid="attr3-input"
-              type="number"
-              name="cardAttr3"
-              id="cardAttr3"
-              value={ cardAttr3 }
-              onChange={ onInputChange }
-            />
-          </label>
-        </div>
+        <RenderAttributes { ...this.props } />
 
         <div className="div-internal">
           <label htmlFor="cardImage">

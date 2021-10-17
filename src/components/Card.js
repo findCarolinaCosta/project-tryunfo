@@ -14,7 +14,6 @@ class Card extends Component {
       cardRare,
       cardTrunfo,
       render,
-      removeBtn,
     } = this.props;
 
     const checkCardTrunfo = () => {
@@ -40,10 +39,7 @@ class Card extends Component {
         <h3 data-testid="attr3-card">{cardAttr3}</h3>
         <h4 data-testid="rare-card">{cardRare}</h4>
         { checkCardTrunfo() }
-        {render && <RenderDeleteBtn
-          cardName={ cardName }
-          removeBtn={ removeBtn }
-        />}
+        {render && <RenderDeleteBtn { ...this.props } />}
       </div>
     );
   }
