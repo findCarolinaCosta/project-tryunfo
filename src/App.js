@@ -2,7 +2,8 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import checkAttributes from './components/CheckAttributes';
-import CreateCardList from './components/CreateCardList';
+import getCreateCardList from './components/CreateCardList';
+import getRemoveBtn from './components/RemoveCartFilter';
 
 const formInfo = {
   cardName: '',
@@ -24,6 +25,8 @@ class App extends React.Component {
       cardList: [],
       isSaveButtonDisabled: true,
     };
+    this.removeBtn = getRemoveBtn.bind(this);
+    this.createCardList = getCreateCardList.bind(this);
   }
 
   onInputChange = ({ target }) => {
@@ -42,20 +45,20 @@ class App extends React.Component {
     }
   };
 
-  getRemoveBtn = ({ target }) => {
-    const { id } = target.previousSibling;
-    const { cardList } = this.state;
-    const newCardList = cardList.filter((card) => card.cardName !== target.id);
-    this.setState({
-      cardList: [...newCardList],
-    });
+  // getRemoveBtn = ({ target }) => {
+  //   const { id } = target.previousSibling;
+  //   const { cardList } = this.state;
+  //   const newCardList = cardList.filter((card) => card.cardName !== target.id);
+  //   this.setState({
+  //     cardList: [...newCardList],
+  //   });
 
-    if (id === 'trunfo-card') {
-      this.setState({
-        hasTrunfo: false,
-      });
-    }
-  };
+  //   if (id === 'trunfo-card') {
+  //     this.setState({
+  //       hasTrunfo: false,
+  //     });
+  //   }
+  // };
 
   onSaveButtonClick = (event) => {
     const { cardList } = this.state;
@@ -69,6 +72,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { createCardList } = this;
     return (
       <div className="container">
         <h1>Tryunfo</h1>
@@ -82,10 +86,8 @@ class App extends React.Component {
         </section>
         <section>
           <Card { ...this.state } />
-          <CreateCardList
-            { ...this.state }
-            getRemoveBtn={ this.getRemoveBtn }
-          />
+
+          { createCardList() }
         </section>
       </div>
     );
