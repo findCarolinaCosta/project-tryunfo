@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import ButtonSubmit from './ButtonSubmit';
 import InputsNameDescription from './InputsNameDescription';
 import RenderAttributes from './RenderAttributes';
+import RenderImage from './RenderImage';
 
 class Form extends Component {
   render() {
     const {
       cardName,
       cardDescription,
-      cardImage,
       cardRare,
       isSaveButtonDisabled,
       onInputChange,
@@ -49,21 +49,7 @@ class Form extends Component {
 
         <RenderAttributes { ...this.props } />
 
-        <div className="div-internal">
-          <label htmlFor="cardImage">
-            Url da imagem da carta:
-            <input
-              className="text"
-              data-testid="image-input"
-              type="text"
-              name="cardImage"
-              id="cardImage"
-              value={ cardImage }
-              onChange={ onInputChange }
-            />
-
-          </label>
-        </div>
+        <RenderImage { ...this.props } />
 
         <div className="div-internal">
           <label htmlFor="cardRare">
